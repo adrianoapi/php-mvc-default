@@ -17,9 +17,9 @@ class DefaultMVC
         if (!$this->controlador) {
 
             // Adiciona o controlador padrão
-            require_once ABSPATH . '/controllers/home-controller.php';
+            require_once ABSPATH . '/controllers/HomeController.php';
 
-            // Cria o objeto do controlador "home-controller.php"
+            // Cria o objeto do controlador "HomeController.php"
             // Este controlador deverá ter uma classe chamada HomeController
             $this->controlador = new HomeController();
             $this->controlador->index();
