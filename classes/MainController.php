@@ -2,8 +2,6 @@
 /**
  * MainController - Todos os controllers deverão estender essa classe
  *
- * @package TutsupMVC
- * @since 0.1
  */
 class MainController extends UserLogin
 {

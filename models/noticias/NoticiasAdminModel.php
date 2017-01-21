@@ -2,8 +2,6 @@
 /**
  * Modelo para gerenciar notícias
  *
- * @package TutsupMVC
- * @since 0.1
  */
 class NoticiasAdminModel extends MainModel
 {

@@ -14,7 +14,7 @@ if (!defined('ABSPATH'))
     $lista = $modelo->listar_noticias();
     ?>
 
-    <table class="table table-bordered"
+    <table class="table table-bordered">
         <?php foreach ($lista as $noticia): ?>
 
             <tr>

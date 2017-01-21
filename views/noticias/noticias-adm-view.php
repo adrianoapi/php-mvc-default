@@ -31,13 +31,11 @@ $modelo->sem_limite = true;
 
     <!-- Formulário de edição das notícias -->
     <form method="post" action="" enctype="multipart/form-data">
-        <table class="table">
+        <table class="table table-bordered">
             <tr>
                 <td>
                     Título: <br>
-                    <input type="text" name="noticia_titulo" value="<?php
-                           echo htmlentities(chk_array($modelo->form_data, 'noticia_titulo'));
-                           ?>" />
+                    <input type="text" name="noticia_titulo" value="<?php echo htmlentities(chk_array($modelo->form_data, 'noticia_titulo')); ?>" />
                 </td>
             </tr>
             <tr>
@@ -52,7 +50,7 @@ $modelo->sem_limite = true;
                     <input type="text" name="noticia_data" value="<?php
                     $data = chk_array($modelo->form_data, 'noticia_data');
                     if ($data && $data != '0000-00-00 00:00:00')
-                        echo date('d-m-Y H:i:s', strtotime($data));
+                        echo date('Y-m-d H:i:s', strtotime($data));
                     ?>" />
                 </td>
             </tr>
@@ -60,8 +58,8 @@ $modelo->sem_limite = true;
                 <td>
                     Autor: <br>
                     <input type="text" name="noticia_autor" value="<?php
-                           echo htmlentities($_SESSION['userdata']['user_name']);
-                           ?>" />
+                    echo htmlentities($_SESSION['userdata']['user_name']);
+                    ?>" />
                 </td>
             </tr>
             <tr>
@@ -86,12 +84,11 @@ $modelo->sem_limite = true;
         <input type="hidden" name="insere_noticia" value="1" />
     </form>
 
-    <!-- LISTA AS NOTICIAS -->
-<?php $lista = $modelo->listar_noticias(); ?>
+    <?php $lista = $modelo->listar_noticias(); ?>
 
     <table class="list-table">
 
-<?php foreach ($lista as $noticia): ?>
+        <?php foreach ($lista as $noticia): ?>
 
             <tr>
                 <td><?php echo $noticia['noticia_titulo'] ?></td>
@@ -106,7 +103,7 @@ $modelo->sem_limite = true;
                 </td>
             </tr>
 
-<?php endforeach; ?>
+        <?php endforeach; ?>
 
     </table>
 

@@ -4,8 +4,6 @@
  *
  * 
  *
- * @package TutsupMVC
- * @since 0.1
  */
 class MainModel
 {

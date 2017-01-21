@@ -3,8 +3,6 @@
 /**
  * NoticiasController - Controller de exemplo
  *
- * @package TutsupMVC
- * @since 0.1
  */
 class NoticiasController extends MainController
 {

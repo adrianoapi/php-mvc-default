@@ -2,8 +2,6 @@
 /**
  * UserRegisterController - Controller de exemplo
  *
- * @package TutsupMVC
- * @since 0.1
  */
 class UserRegisterController extends MainController
 {
