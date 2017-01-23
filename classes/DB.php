@@ -1,18 +1,16 @@
 <?php
 
-class DB
-{
+class DB {
 
-    /** DB properties */
-    public $host = 'localhost', // Host da base de dados 
-            $db_name = '', // Nome do banco de dados
-            $password = '', // Senha do usuário da base de dados
-            $user = 'root', // Usuário da base de dados
-            $charset = 'utf8', // Charset da base de dados
-            $pdo = null, // Nossa conexão com o BD
-            $error = null, // Configura o erro
-            $debug = false, // Mostra todos os erros 
-            $last_id = null;        // Último ID inserido
+    public $host = 'localhost',
+            $db_name = 'lab_mvc_default',
+            $password = '',
+            $user = 'root',
+            $charset = 'utf8',
+            $pdo = null,
+            $error = null,
+            $debug = false,
+            $last_id = null;
 
     /**
      * Construtor da classe
@@ -26,15 +24,9 @@ class DB
      * @param string $charset
      * @param string $debug
      */
-
     public function __construct(
     $host = null, $db_name = null, $password = null, $user = null, $charset = null, $debug = null
-    )
-    {
-
-        // Configura as propriedades novamente.
-        // Se você fez isso no início dessa classe, as constantes não serão
-        // necessárias. Você escolhe...
+    ) {
         $this->host = defined('HOSTNAME') ? HOSTNAME : $this->host;
         $this->db_name = defined('DB_NAME') ? DB_NAME : $this->db_name;
         $this->password = defined('DB_PASSWORD') ? DB_PASSWORD : $this->password;
@@ -42,7 +34,6 @@ class DB
         $this->charset = defined('DB_CHARSET') ? DB_CHARSET : $this->charset;
         $this->debug = defined('DEBUG') ? DEBUG : $this->debug;
 
-        // Conecta
         $this->connect();
     }
 
@@ -55,8 +46,7 @@ class DB
      * @final
      * @access protected
      */
-    final protected function connect()
-    {
+    final protected function connect() {
 
         /* Os detalhes da nossa conexão PDO */
         $pdo_details = "mysql:host={$this->host};";
@@ -95,8 +85,7 @@ class DB
      * @access public
      * @return object|bool Retorna a consulta ou falso
      */
-    public function query($stmt, $data_array = null)
-    {
+    public function query($stmt, $data_array = null) {
 
         // Prepara e executa
         $query = $this->pdo->prepare($stmt);
@@ -123,8 +112,7 @@ class DB
      * @param array ... Ilimitado número de arrays com chaves e valores
      * @return object|bool Retorna a consulta ou falso
      */
-    public function insert($table)
-    {
+    public function insert($table) {
         // Configura o array de colunas
         $cols = array();
 
@@ -215,8 +203,7 @@ class DB
      * @param array $values Um array com os novos valores
      * @return object|bool Retorna a consulta ou falso
      */
-    public function update($table, $where_field, $where_field_value, $values)
-    {
+    public function update($table, $where_field, $where_field_value, $values) {
         // Você tem que enviar todos os parâmetros
         if (empty($table) || empty($where_field) || empty($where_field_value)) {
             return;
@@ -279,8 +266,7 @@ class DB
      * @param string $where_field_value WHERE $where_field = $where_field_value
      * @return object|bool Retorna a consulta ou falso
      */
-    public function delete($table, $where_field, $where_field_value)
-    {
+    public function delete($table, $where_field, $where_field_value) {
         // Você precisa enviar todos os parâmetros
         if (empty($table) || empty($where_field) || empty($where_field_value)) {
             return;
