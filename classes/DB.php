@@ -1,6 +1,7 @@
 <?php
 
-class DB {
+class DB
+{
 
     public $host = 'localhost',
             $db_name = 'lab_mvc_default',
@@ -26,7 +27,8 @@ class DB {
      */
     public function __construct(
     $host = null, $db_name = null, $password = null, $user = null, $charset = null, $debug = null
-    ) {
+    )
+    {
         $this->host = defined('HOSTNAME') ? HOSTNAME : $this->host;
         $this->db_name = defined('DB_NAME') ? DB_NAME : $this->db_name;
         $this->password = defined('DB_PASSWORD') ? DB_PASSWORD : $this->password;
@@ -46,7 +48,8 @@ class DB {
      * @final
      * @access protected
      */
-    final protected function connect() {
+    final protected function connect()
+    {
 
         /* Os detalhes da nossa conexão PDO */
         $pdo_details = "mysql:host={$this->host};";
@@ -85,7 +88,8 @@ class DB {
      * @access public
      * @return object|bool Retorna a consulta ou falso
      */
-    public function query($stmt, $data_array = null) {
+    public function query($stmt, $data_array = null)
+    {
 
         // Prepara e executa
         $query = $this->pdo->prepare($stmt);
@@ -112,7 +116,8 @@ class DB {
      * @param array ... Ilimitado número de arrays com chaves e valores
      * @return object|bool Retorna a consulta ou falso
      */
-    public function insert($table) {
+    public function insert($table)
+    {
         // Configura o array de colunas
         $cols = array();
 
@@ -203,49 +208,40 @@ class DB {
      * @param array $values Um array com os novos valores
      * @return object|bool Retorna a consulta ou falso
      */
-    public function update($table, $where_field, $where_field_value, $values) {
-        // Você tem que enviar todos os parâmetros
+    public function update($table, $where_field, $where_field_value, $values)
+    {
+
         if (empty($table) || empty($where_field) || empty($where_field_value)) {
             return;
         }
 
-        // Começa a declaração
         $stmt = " UPDATE `$table` SET ";
-
-        // Configura o array de valores
         $set = array();
-
-        // Configura a declaração do WHERE campo=valor
         $where = " WHERE `$where_field` = ? ";
 
-        // Você precisa enviar um array com valores
         if (!is_array($values)) {
             return;
         }
 
-        // Configura as colunas a atualizar
         foreach ($values as $column => $value) {
             $set[] = " `$column` = ?";
         }
 
-        // Separa as colunas por vírgula
+
         $set = implode(', ', $set);
-
-        // Concatena a declaração
         $stmt .= $set . $where;
-
-        // Configura o valor do campo que vamos buscar
         $values[] = $where_field_value;
 
-        // Garante apenas números nas chaves do array
         $values = array_values($values);
+        
+//        print_r($stmt);
+//        echo "<br/>";
+//        print_r($values);
+//        die();
 
-        // Atualiza
         $update = $this->query($stmt, $values);
 
-        // Verifica se a consulta está OK
         if ($update) {
-            // Retorna a consulta
             return $update;
         }
 
@@ -266,19 +262,15 @@ class DB {
      * @param string $where_field_value WHERE $where_field = $where_field_value
      * @return object|bool Retorna a consulta ou falso
      */
-    public function delete($table, $where_field, $where_field_value) {
+    public function delete($table, $where_field, $where_field_value)
+    {
         // Você precisa enviar todos os parâmetros
         if (empty($table) || empty($where_field) || empty($where_field_value)) {
             return;
         }
 
-        // Inicia a declaração
         $stmt = " DELETE FROM `$table` ";
-
-        // Configura a declaração WHERE campo=valor
         $where = " WHERE `$where_field` = ? ";
-
-        // Concatena tudo
         $stmt .= $where;
 
         // O valor que vamos buscar para apagar

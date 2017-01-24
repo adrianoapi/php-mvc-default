@@ -49,8 +49,11 @@ $modelo->sem_limite = true;
                     Data: <br>
                     <input type="text" name="noticia_data" value="<?php
                     $data = chk_array($modelo->form_data, 'noticia_data');
-                    if ($data && $data != '0000-00-00 00:00:00')
+                    if ($data && $data != '0000-00-00 00:00:00') {
                         echo date('Y-m-d H:i:s', strtotime($data));
+                    } else {
+                        echo date('Y-m-d H:i:s');
+                    }
                     ?>" />
                 </td>
             </tr>
