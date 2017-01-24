@@ -245,7 +245,8 @@ class NoticiasAdminModel extends MainModel implements INoticias
      */
     public function insere_noticia()
     {
-
+        # Teste
+//        die('<p>parou arqui!<p/>');
         /*
           Verifica se algo foi postado e se está vindo do form que tem o campo
           insere_noticia.

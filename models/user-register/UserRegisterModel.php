@@ -227,7 +227,6 @@ class UserRegisterModel
         // Verifica se o ID não está vazio
         if (!empty($user_id)) {
 
-            // O ID precisa ser inteiro
             $user_id = (int) $user_id;
 
             // Deleta o usuário

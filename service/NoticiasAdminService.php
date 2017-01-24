@@ -8,4 +8,9 @@ class NoticiasAdminService
         
     }
 
+    public function teste()
+    {
+        echo "service funfou";
+    }
+
 }
