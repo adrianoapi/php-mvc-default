@@ -75,10 +75,7 @@ $modelo->sem_limite = true;
             </tr>
             <tr>
                 <td colspan="2">
-                    <?php
-                    // Mensagem de feedback para o usuário
-                    echo $modelo->form_msg;
-                    ?>
+                    <?php echo $modelo->form_msg; ?>
                     <input type="submit" value="Save" />
                 </td>
             </tr>

@@ -279,9 +279,7 @@ class DB
         // Apaga
         $delete = $this->query($stmt, $values);
 
-        // Verifica se a consulta está OK
         if ($delete) {
-            // Retorna a consulta
             return $delete;
         }
         return;

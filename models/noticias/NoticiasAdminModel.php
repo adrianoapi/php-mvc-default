@@ -330,19 +330,19 @@ class NoticiasAdminModel extends MainModel
 			'image/png',
 		);
 		
-		// Verifica se o mimetype enviado é permitido
-		if ( ! in_array( $tipo_imagem, $permitir_tipos ) ) {
-			// Retorna uma mensagem
-			$this->form_msg = '<p class="error">Você deve enviar uma imagem.</p>';
-			return;
-		}
+		# Verifica se o mimetype enviado é permitido
+//		if ( ! in_array( $tipo_imagem, $permitir_tipos ) ) {
+//			// Retorna uma mensagem
+//			$this->form_msg = '<p class="error">Você deve enviar uma imagem.</p>';
+//			return;
+//		}
 		
-		// Tenta mover o arquivo enviado
-		if ( ! move_uploaded_file( $tmp_imagem, UP_ABSPATH . '/' . $nome_imagem ) ) {
-			// Retorna uma mensagem
-			$this->form_msg = '<p class="error">Erro ao enviar imagem.</p>';
-			return;
-		}
+		# Tenta mover o arquivo enviado
+//		if ( ! move_uploaded_file( $tmp_imagem, UP_ABSPATH . '/' . $nome_imagem ) ) {
+//			// Retorna uma mensagem
+//			$this->form_msg = '<p class="error">Erro ao enviar imagem.</p>';
+//			return;
+//		}
 		
 		// Retorna o nome da imagem
 		return $nome_imagem;
@@ -419,6 +419,6 @@ class NoticiasAdminModel extends MainModel
 			echo " ... <a href='$caminho_noticias$last'>$last</a>";
 		}
 
-	} // paginacao
+	}
 	
-} // NoticiasAdmModel
+}

@@ -18,6 +18,17 @@ class NoticiasController extends MainController
 
         require ABSPATH . '/views/_includes/header.php';
         require ABSPATH . '/views/_includes/menu.php';
+        require ABSPATH . '/views/noticias/noticias-list.php';
+        require ABSPATH . '/views/_includes/footer.php';
+    }
+
+    public function visualizar()
+    {
+        $this->title = 'Notícias';
+
+        $modelo = $this->load_model('noticias/NoticiasAdminModel');
+        require ABSPATH . '/views/_includes/header.php';
+        require ABSPATH . '/views/_includes/menu.php';
         require ABSPATH . '/views/noticias/noticias-view.php';
         require ABSPATH . '/views/_includes/footer.php';
     }

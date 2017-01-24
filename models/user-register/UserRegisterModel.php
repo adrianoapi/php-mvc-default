@@ -107,13 +107,9 @@ class UserRegisterModel
             // Verifica se a consulta está OK e configura a mensagem
             if (!$query) {
                 $this->form_msg = '<p class="form_error">Internal error. Data has not been sent.</p>';
-
-                // Termina
                 return;
             } else {
                 $this->form_msg = '<p class="form_success">User successfully updated.</p>';
-
-                // Termina
                 return;
             }
             // Se o ID do usuário estiver vazio, insere os dados

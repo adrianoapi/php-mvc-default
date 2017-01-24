@@ -19,7 +19,7 @@ if (!defined('ABSPATH'))
 
             <tr>
                 <td>
-                    <a href="<?php echo HOME_URI ?>/noticias/index/<?php echo $noticia['noticia_id'] ?>">
+                    <a href="<?php echo HOME_URI ?>/noticias/visualizar/<?php echo $noticia['noticia_id'] ?>">
                         <?php echo $noticia['noticia_titulo'] ?>
                     </a>
                 </td>
