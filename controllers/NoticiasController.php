@@ -11,7 +11,7 @@ class NoticiasController extends MainController
 
     public function __construct($parametros = array())
     {
-        $interface = $this->load_interface('INoticias');
+        $this->load_interface('INoticias');
         parent::__construct($parametros);
     }
 
