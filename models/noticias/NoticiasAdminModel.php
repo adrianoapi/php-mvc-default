@@ -13,7 +13,7 @@ class NoticiasAdminModel extends MainModel implements INoticias
     private $titulo;
     private $texto;
     private $imagem;
-    public $posts_por_pagina = 5;
+    public $itens_por_pagina = 10;
 
     public function __construct($db = false, $controller = null)
     {
@@ -124,10 +124,10 @@ class NoticiasAdminModel extends MainModel implements INoticias
         $pagina--;
 
         // Configura o número de posts por página
-        $posts_por_pagina = $this->posts_por_pagina;
+        $itens_por_pagina = $this->itens_por_pagina;
 
         // O offset dos posts da consulta
-        $offset = $pagina * $posts_por_pagina;
+        $offset = $pagina * $itens_por_pagina;
 
         /*
           Esta propriedade foi configurada no NoticiasAdminModel.php para
@@ -136,7 +136,7 @@ class NoticiasAdminModel extends MainModel implements INoticias
         if (empty($this->sem_limite)) {
 
             // Configura o limite da consulta
-            $query_limit = " LIMIT $offset,$posts_por_pagina ";
+            $query_limit = " LIMIT $offset,$itens_por_pagina ";
         }
 
         // Faz a consulta

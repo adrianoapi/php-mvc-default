@@ -86,7 +86,7 @@ class MainModel
         $caminho_noticias = HOME_URI . '/noticias/index/page/';
 
         // Itens por página
-        $posts_per_page = $this->posts_por_pagina;
+        $posts_per_page = $this->itens_por_pagina;
 
         // Obtém a última página possível
         $last = ceil($total / $posts_per_page);
