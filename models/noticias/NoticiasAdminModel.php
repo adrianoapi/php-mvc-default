@@ -4,42 +4,84 @@
  * Modelo para gerenciar notícias
  *
  */
-class NoticiasAdminModel extends MainModel
+class NoticiasAdminModel extends MainModel implements INoticias
 {
 
-    /**
-     * $posts_per_page
-     *
-     * Receberá o número de posts por página para configurar a listagem de 
-     * notícias. Também utilizada na paginação. 
-     *
-     * @access public
-     */
+    private $id;
+    private $date;
+    private $autor;
+    private $titulo;
+    private $texto;
+    private $imagem;
     public $posts_por_pagina = 5;
 
-    /**
-     * Construtor para essa classe
-     *
-     * Configura o DB, o controlador, os parâmetros e dados do usuário.
-     *
-     * @since 0.1
-     * @access public
-     * @param object $db Objeto da nossa conexão PDO
-     * @param object $controller Objeto do controlador
-     */
     public function __construct($db = false, $controller = null)
     {
-        // Configura o DB (PDO)
         $this->db = $db;
-
-        // Configura o controlador
         $this->controller = $controller;
-
-        // Configura os parâmetros
         $this->parametros = $this->controller->parametros;
-
-        // Configura os dados do usuário
         $this->userdata = $this->controller->userdata;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    public function setDate($date)
+    {
+        $this->date = $date;
+        return $this;
+    }
+
+    public function getAutor()
+    {
+        return $this->autor;
+    }
+
+    public function setAutor($autor)
+    {
+        $this->autor = $autor;
+        return $this;
+    }
+
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+        return $this;
+    }
+
+    public function getTexto()
+    {
+        return $this->texto;
+    }
+
+    public function setTexto($text)
+    {
+        $this->texto = $text;
+        return $this;
+    }
+
+    public function getImagem()
+    {
+        return $this->imagem;
+    }
+
+    public function setImagem($img)
+    {
+        $this->imagem = $img;
+        return $this;
     }
 
     public function getNoticia($id)

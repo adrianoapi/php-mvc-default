@@ -7,67 +7,13 @@
 class MainController extends UserLogin
 {
 
-    /**
-     * $db
-     *
-     * Nossa conexão com a base de dados. Manterá o objeto PDO
-     *
-     * @access public
-     */
     public $db;
-
-    /**
-     * $phpass
-     *
-     * Classe phpass 
-     *
-     * @see http://www.openwall.com/phpass/
-     * @access public
-     */
     public $phpass;
-
-    /**
-     * $title
-     *
-     * Título das páginas 
-     *
-     * @access public
-     */
     public $title;
-
-    /**
-     * $login_required
-     *
-     * Se a página precisa de login
-     *
-     * @access public
-     */
     public $login_required = false;
-
-    /**
-     * $permission_required
-     *
-     * Permissão necessária
-     *
-     * @access public
-     */
     public $permission_required = 'any';
-
-    /**
-     * $parametros
-     *
-     * @access public
-     */
     public $parametros = array();
 
-    /**
-     * Construtor da classe
-     *
-     * Configura as propriedades e métodos da classe.
-     *
-     * @since 0.1
-     * @access public
-     */
     public function __construct($parametros = array())
     {
 
@@ -84,16 +30,6 @@ class MainController extends UserLogin
         $this->check_userlogin();
     }
 
-// __construct
-
-    /**
-     * Load model
-     *
-     * Carrega os modelos presentes na pasta /models/.
-     *
-     * @since 0.1
-     * @access public
-     */
     public function load_model($model_name = false)
     {
 
@@ -127,6 +63,65 @@ class MainController extends UserLogin
 
                 // Retorna um objeto da classe
                 return new $model_name($this->db, $this);
+            }
+
+            return;
+        }
+    }
+
+    public function load_service($service_name = false)
+    {
+
+        if (!$service_name)
+            return;
+
+        $service_name = strtolower($service_name);
+
+        $model_path = ABSPATH . '/service/' . $service_name . '.php';
+
+        if (file_exists($model_path)) {
+
+            require_once $model_path;
+
+            $service_name = explode('/', $service_name);
+
+            $service_name = end($service_name);
+
+            $service_name = preg_replace('/[^a-zA-Z0-9]/is', '', $service_name);
+
+            if (class_exists($service_name)) {
+
+                return new $service_name($this->db, $this);
+            }
+
+            return;
+        }
+    }
+    
+     public function load_interface($interface_name = false)
+    {
+
+        if (!$interface_name)
+            return;
+
+        $interface_name = strtolower($interface_name);
+        $model_path = ABSPATH . '/interface/' . $interface_name . '.php';
+//        echo $model_path;
+//        die();
+
+        if (file_exists($model_path)) {
+
+            require_once $model_path;
+
+            $interface_name = explode('/', $interface_name);
+
+            $interface_name = end($interface_name);
+
+            $interface_name = preg_replace('/[^a-zA-Z0-9]/is', '', $interface_name);
+
+            if (class_exists($interface_name)) {
+
+                return new $interface_name($this->db, $this);
             }
 
             return;

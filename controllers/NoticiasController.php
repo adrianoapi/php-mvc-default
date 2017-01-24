@@ -10,11 +10,18 @@ class NoticiasController extends MainController
     public $login_required = false;
     public $permission_required;
 
+    public function __construct($parametros = array())
+    {
+        $interface = $this->load_interface('INoticias');
+        parent::__construct($parametros);
+    }
+
     public function index()
     {
         $this->title = 'Notícias';
 
         $modelo = $this->load_model('noticias/NoticiasAdminModel');
+        $service = $this->load_service('noticias/NoticiasAdminService');
         require ABSPATH . '/views/_includes/header.php';
         require ABSPATH . '/views/_includes/menu.php';
         require ABSPATH . '/views/noticias/noticias-list.php';
@@ -26,6 +33,7 @@ class NoticiasController extends MainController
         $this->title = 'Notícias';
 
         $modelo = $this->load_model('noticias/NoticiasAdminModel');
+        $service = $this->load_service('noticias/NoticiasAdminService');
         require ABSPATH . '/views/_includes/header.php';
         require ABSPATH . '/views/_includes/menu.php';
         require ABSPATH . '/views/noticias/noticias-view.php';
