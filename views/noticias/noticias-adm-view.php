@@ -86,18 +86,20 @@ $modelo->sem_limite = true;
 
     <?php $lista = $modelo->listar_noticias(); ?>
 
-    <table class="list-table">
-
+    <table class="table table-bordered table-condensed table-striped">
+        <tr>
+            <th class="col-md-9">Título</th>
+            <th class="col-md-3">Ação</th>
+        </tr>
         <?php foreach ($lista as $noticia): ?>
-
             <tr>
                 <td><?php echo $noticia['noticia_titulo'] ?></td>
                 <td>
-                    <a href="<?php echo $edit_uri . $noticia['noticia_id'] ?>">
+                    <a class="btn-sm btn-primary" href="<?php echo $edit_uri . $noticia['noticia_id'] ?>">
                         Editar
                     </a> 
-
-                    <a href="<?php echo $delete_uri . $noticia['noticia_id'] ?>">
+                    &nbsp;
+                    <a class="btn-sm btn-primary" href="<?php echo $delete_uri . $noticia['noticia_id'] ?>">
                         Apagar
                     </a>
                 </td>

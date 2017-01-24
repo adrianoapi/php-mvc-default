@@ -246,7 +246,6 @@ class UserLogin
             return;
         }
 
-        // Se o usuário não tiver permissão
         if (!in_array($required, $user_permissions)) {
             return false;
         } else {

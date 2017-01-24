@@ -1,5 +1,4 @@
 <?php
-// Evita acesso direto a este arquivo
 if (!defined('ABSPATH'))
     exit;
 ?>
@@ -8,9 +7,9 @@ if (!defined('ABSPATH'))
 
     <?php
     $noticia = $modelo->getNoticia($modelo->parametros);
-    echo "<pre>";
-    print_r($noticia);
-    echo "</pre>";
+//    echo "<pre>";
+//    print_r($noticia);
+//    echo "</pre>";
     ?>
 
     <table class="table table-bordered">
