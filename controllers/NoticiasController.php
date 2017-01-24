@@ -15,7 +15,6 @@ class NoticiasController extends MainController
         $this->title = 'Notícias';
 
         $modelo = $this->load_model('noticias/NoticiasAdminModel');
-
         require ABSPATH . '/views/_includes/header.php';
         require ABSPATH . '/views/_includes/menu.php';
         require ABSPATH . '/views/noticias/noticias-list.php';
@@ -61,11 +60,8 @@ class NoticiasController extends MainController
             return;
         }
 
-        // Carrega o modelo para este view
         $modelo = $this->load_model('noticias/NoticiasAdminModel');
 
-        /** Carrega os arquivos do view * */
-        // /views/_includes/header.php
         require ABSPATH . '/views/_includes/header.php';
         require ABSPATH . '/views/_includes/menu.php';
         require ABSPATH . '/views/noticias/noticias-adm-view.php';

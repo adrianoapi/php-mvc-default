@@ -7,12 +7,8 @@ if (!defined('ABSPATH'))
 <div class="wrap">
 
     <?php
-// Número de posts por página
 //    $modelo->posts_por_pagina = 10;
-
-// Lista notícias
     $lista = $modelo->listar_noticias();
-    
     ?>
 
     <table class="table table-bordered">
