@@ -41,8 +41,8 @@ class MainController extends UserLogin
         $model_name = strtolower($model_name);
 
         // Inclui o arquivo
+        $service = $this->load_service('NoticiasAdminService');
         $model_path = ABSPATH . '/models/' . $model_name . '.php';
-
         // Verifica se o arquivo existe
         if (file_exists($model_path)) {
 
@@ -62,7 +62,7 @@ class MainController extends UserLogin
             if (class_exists($model_name)) {
 
                 // Retorna um objeto da classe
-                return new $model_name($this->db, $this);
+                return new $model_name($this->db, $this, $service);
             }
 
             return;
@@ -97,8 +97,8 @@ class MainController extends UserLogin
             return;
         }
     }
-    
-     public function load_interface($interface_name = false)
+
+    public function load_interface($interface_name = false)
     {
 
         if (!$interface_name)

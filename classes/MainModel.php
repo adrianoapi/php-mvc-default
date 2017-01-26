@@ -11,6 +11,7 @@ class MainModel
     public $form_confirma;
     public $db;
     public $controller;
+    public $service;
     public $parametros;
     public $userdata;
 

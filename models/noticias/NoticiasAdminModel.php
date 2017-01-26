@@ -15,10 +15,11 @@ class NoticiasAdminModel extends MainModel implements INoticias
     private $imagem;
     public $itens_por_pagina = 10;
 
-    public function __construct($db = false, $controller = null)
+    public function __construct($db = false, $controller = null, $service)
     {
         $this->db = $db;
         $this->controller = $controller;
+        $this->service = $service;
         $this->parametros = $this->controller->parametros;
         $this->userdata = $this->controller->userdata;
     }

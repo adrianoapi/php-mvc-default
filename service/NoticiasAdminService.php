@@ -10,7 +10,7 @@ class NoticiasAdminService
 
     public function teste()
     {
-        echo "service funfou";
+        echo "<br/><br/><br/>service funfou";
     }
 
 }

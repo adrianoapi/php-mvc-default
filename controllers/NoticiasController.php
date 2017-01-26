@@ -13,7 +13,7 @@ class NoticiasController extends MainController
     public function __construct($parametros = array())
     {
         $interface = $this->load_interface('INoticias');
-        $this->service = $this->load_service('NoticiasAdminService');
+        
         parent::__construct($parametros);
     }
 
